@@ -13,7 +13,6 @@ export default async function CustomersPage() {
       by: ['customerEmail', 'customerName'],
       _count: { _all: true },
       _sum: { totalGrossCents: true, adminPriceCents: true },
-      orderBy: { _count: { customerEmail: 'desc' } },
       take: 200,
     });
   } catch (e) {

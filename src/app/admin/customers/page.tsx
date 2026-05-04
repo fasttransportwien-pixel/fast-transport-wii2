@@ -9,17 +9,16 @@ export default async function CustomersPage() {
   let grouped: any[] = [];
   let dbError = false;
   try {
-    grouped = await prisma.order.groupBy({
-      by: ['customerEmail', 'customerName'],
-      _count: { _all: true },
-      _sum: { totalGrossCents: true, adminPriceCents: true },
-      take: 200,
-    });
+   grouped = await prisma.order.groupBy({
+  by: ['customerEmail', 'customerName'],
+  _count: { _all: true },
+  _sum: { totalGrossCents: true, adminPriceCents: true },
+  take: 200,
+} as any);  
   } catch (e) {
     console.error('Customers query failed:', e);
     dbError = true;
   }
-
   return (
     <div className="space-y-5">
       <h1 className="text-2xl font-extrabold text-ink-800">Kunden</h1>
